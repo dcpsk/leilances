@@ -38,11 +38,14 @@ export default async function Home() {
           {sess && <p>Bem-vindo, {sess.user.email}</p>}
           <h1 class={"text-2xl font-bold"}>LEILÕES ATIVOS</h1>
           <div class={"grid grid-cols-2 gap-4"}>
-              {salas.map((e,k) => {
+              {salas.length > 0 ?
+                salas.map((e,k) => {
                 return <Anuncio key={k} props={
                   {id: e.produto_id, vendedor: e.nome, descricao: e.descricao, preco: e.preco, criado_em: e.criado_em, expira_em: e.expira_em}
                   } />
-              })}
+                }) :
+                <h4>Nada por enquanto! Volte mais tarde.</h4>
+              }
           </div>
           
       </div>
