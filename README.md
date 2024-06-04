@@ -1,2 +1,2 @@
-# leilances
-Plataforma simples de leilões em tempo real feita com NextJS e Socket.io
+# Leilances
+Conceito de plataforma simples de leilões em tempo real programada com NextJS e Socket.io 
