@@ -10,8 +10,6 @@ const db = await open({
   driver: sqlite3.Database
 });
 
-let salas = await db.all('SELECT * FROM produto LEFT JOIN usuario ON usuario.usuario_id = produto.usuario_id WHERE expira_em > ? ORDER BY produto_id DESC', Date.now() - 500).then((e) => {return e})
-
 function Anuncio({props}) {
   return (
     <div class={"p-4 bg-white shadow-md hover:shadow-lg cursor-pointer"}>
@@ -30,6 +28,8 @@ function Anuncio({props}) {
 
 export default async function Home() {
   const sess = await getServerSession(authOptions)
+
+  let salas = await db.all('SELECT * FROM produto LEFT JOIN usuario ON usuario.usuario_id = produto.usuario_id WHERE expira_em > ? ORDER BY produto_id DESC', Date.now() - 500).then((e) => {return e})
 
   return (
       <div class={"container mx-auto p-4"}>
